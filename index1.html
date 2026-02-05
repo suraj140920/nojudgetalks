@@ -7,19 +7,18 @@
 
     <style>
         body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: 
-        linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.08)),
-        url("background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    color: #000;
-    line-height: 1.6;
-}
-        
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background:
+                linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.08)),
+                url("background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #000; /* ALL text black */
+            line-height: 1.6;
+        }
 
         .container {
             max-width: 900px;
@@ -34,12 +33,12 @@
 
         header h1 {
             font-size: 2.8rem;
-            color: #2c3e50;
+            color: #3b7dbf; /* darker sky blue */
         }
 
         header p {
             font-size: 1.2rem;
-            color: #555;
+            color: #000; /* pure black */
         }
 
         .section {
@@ -47,7 +46,11 @@
         }
 
         h2 {
-            color: #34495e;
+            color: #000; /* pure black */
+        }
+
+        p {
+            color: #000; /* pure black */
         }
 
         .button {
@@ -60,39 +63,27 @@
             margin-top: 15px;
             border: none;
             cursor: pointer;
+
+            /* hidden initially */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+
+        .button.show {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .button:hover {
             background-color: #1f2f3d;
         }
 
-        form {
-            background: #f9f9f9;
-            padding: 25px;
-            border-radius: 8px;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: 600;
-        }
-
-        textarea,
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-family: inherit;
-        }
-
         footer {
             text-align: center;
             margin-top: 40px;
             font-size: 0.9rem;
-            color: #777;
+            color: #000; /* pure black */
         }
     </style>
 </head>
@@ -116,17 +107,22 @@
             <h2>Book a Session</h2>
             <p>Make a payment to unlock session booking.</p>
 
-            <!-- This will later link to your second page -->
-            <a class="button" href="payment2.html">
-               Make Payment to Book a Session
+            <a class="button" id="payButton" href="payment2.html">
+                Make Payment to Book a Session
             </a>
         </div>
 
-
         <footer>
-           © 2026 JustListen • You speak. I listen.
+            © 2026 JustListen • You speak. I listen.
         </footer>
 
     </div>
+
+    <script>
+        // Show payment button after 5 seconds
+        setTimeout(() => {
+            document.getElementById("payButton").classList.add("show");
+        }, 5000);
+    </script>
 </body>
 </html>
