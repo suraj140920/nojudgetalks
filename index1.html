@@ -1,80 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>A Safe Space to Be Heard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>A Safe Space to Be Heard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #eef2f7, #ffffff);
-            color: #333;
-            line-height: 1.6;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: 
+        linear-gradient(rgba(238,242,247,0.9), rgba(255,255,255,0.9)),
+        url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.6;
+}
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 50px 20px;
+}
 
-        h1 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
+h1 {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
 
-        h2 {
-            margin-top: 40px;
-            color: #34495e;
-        }
+p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
 
-        p {
-            font-size: 1.05rem;
-            margin-bottom: 15px;
-        }
+.highlight {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 25px;
+}
 
-        .highlight {
-            font-weight: bold;
-            margin-top: 20px;
-        }
+.buttons {
+    text-align: center;
+    margin: 25px 0;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: #777;
-        }
-    </style>
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2c3e50;
+    color: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1f2f3d;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #666;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
-    <h1>A Safe Space to Be Heard</h1>
 
-    <h2>English</h2>
+<h1 id="title">A Safe Space to Be Heard</h1>
+
+<div class="buttons">
+    <button onclick="setEnglish()">English</button>
+    <button onclick="setHindi()">हिंदी</button>
+    <button onclick="setMarathi()">मराठी</button>
+</div>
+
+<div id="content">
     <p>Sometimes, we carry thoughts, emotions, and stories that we deeply want to share — but we hesitate.</p>
     <p>This platform is created for people who simply need someone to listen, without judgement.</p>
     <p>No advice. No opinions. Just listening.</p>
     <p class="highlight">You speak. We listen.</p>
-
-    <h2>हिंदी</h2>
-    <p>कई बार हमारे मन में ऐसी बातें होती हैं जिन्हें हम कहना तो चाहते हैं, लेकिन जजमेंट का डर रोक देता है।</p>
-    <p>यह प्लेटफॉर्म उन लोगों के लिए है जो बस सुने जाना चाहते हैं।</p>
-    <p class="highlight">आप बोलिए — हम सुनेंगे।</p>
-
-    <h2>मराठी</h2>
-    <p>कधी कधी आपल्या मनातल्या गोष्टी सांगायच्या असतात, पण निर्णयाची भीती वाटते.</p>
-    <p>हा प्लॅटफॉर्म फक्त ऐकण्यासाठी आहे — कोणताही जजमेंट नाही.</p>
-    <p class="highlight">तुम्ही बोला — आम्ही ऐकू.</p>
-
-    <footer>
-        © 2026 • A Safe Listening Space
-    </footer>
 </div>
+
+<footer id="footer">
+    © 2026 • A Safe Listening Space
+</footer>
+
+</div>
+
+<script>
+function setEnglish() {
+    document.getElementById("title").innerText = "A Safe Space to Be Heard";
+    document.getElementById("content").innerHTML = `
+        <p>Sometimes, we carry thoughts, emotions, and stories that we deeply want to share — but we hesitate.</p>
+        <p>This platform is created for people who simply need someone to listen, without judgement.</p>
+        <p>No advice. No opinions. Just listening.</p>
+        <p class="highlight">You speak. We listen.</p>
+    `;
+}
+
+function setHindi() {
+    document.getElementById("title").innerText = "बिना जजमेंट के सुने जाने की जगह";
+    document.getElementById("content").innerHTML = `
+        <p>कई बार हमारे मन में ऐसी बातें होती हैं जिन्हें हम कहना तो चाहते हैं, लेकिन जजमेंट का डर रोक देता है।</p>
+        <p>यह प्लेटफॉर्म उन लोगों के लिए है जो बस किसी ऐसे इंसान से बात करना चाहते हैं जो उन्हें जज न करे।</p>
+        <p>यहाँ न कोई सलाह है, न कोई राय — बस सुनना।</p>
+        <p class="highlight">आप बोलिए — हम सुनेंगे।</p>
+    `;
+}
+
+function setMarathi() {
+    document.getElementById("title").innerText = "निर्णय न करता ऐकणारी सुरक्षित जागा";
+    document.getElementById("content").innerHTML = `
+        <p>कधी कधी आपल्या मनातल्या गोष्टी सांगायच्या असतात, पण कोणी आपल्याला जज करेल याची भीती वाटते.</p>
+        <p>हा प्लॅटफॉर्म त्यांच्यासाठी आहे ज्यांना फक्त शांतपणे ऐकून घेतले जावे असे वाटते.</p>
+        <p>इथे सल्ला नाही, मत नाही — फक्त ऐकणे.</p>
+        <p class="highlight">तुम्ही बोला — आम्ही ऐकू.</p>
+    `;
+}
+</script>
 
 </body>
 </html>
