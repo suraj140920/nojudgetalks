@@ -1,100 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>JustListen | Payment</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Payment | JustListen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            min-height: 100vh;
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    padding: 40px;
+    margin: 0;
+    min-height: 100vh;
 
-            background:
-                linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
-                url("background.jpg");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+    background:
+        linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+        url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.qr-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+}
 
-        .container {
-            max-width: 600px;
-            width: 90%;
-            background: white;
-            padding: 40px 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
+.qr-wrapper img {
+    max-width: 300px;
+    border-radius: 8px;
+}
 
-        h2 {
-            margin-bottom: 10px;
-            color: #000;
-        }
+/* Download icon */
+.download-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.65);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+}
 
-        p {
-            color: #000;
-            line-height: 1.6;
-        }
+.download-icon:hover {
+    background: rgba(0,0,0,0.85);
+}
 
-        .button {
-            padding: 14px 30px;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 25px;
-            font-size: 1rem;
+.hint {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 12px;
+}
 
-            /* Hidden initially */
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-            pointer-events: none;
+/* SESSION INFO BUTTON */
+.session-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 28px;
+    background: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
 
-            transition:
-                opacity 0.6s ease,
-                transform 0.6s ease,
-                box-shadow 0.3s ease;
-        }
+    /* hidden initially */
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+    pointer-events: none;
 
-        .button.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
-        }
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+}
 
-        .button:hover {
-            background-color: #1f2f3d;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-        }
-    </style>
+.session-btn.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.session-btn:hover {
+    background: #1f2f3d;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Complete Payment</h2>
-    <p>Pay to unlock your one-to-one listening session.</p>
+<h1>Complete Payment</h1>
+<p>Please scan or download the QR code to confirm your session</p>
 
-    <p><strong>Session:</strong> 30 minutes (Flexible)</p>
-    <p><strong>Price:</strong> ₹599 (Listening) &nbsp; | &nbsp; ₹799 (Advice & Guidance)</p>
+<div class="qr-wrapper">
+    <img src="upi_QR_Code.jpg" alt="UPI QR Code">
 
-    <a href="payment2.html" class="button" id="payBtn">
-        Complete Payment
+    <a href="upi_QR_Code.jpg"
+       download="JustListen-upi_QR_Code.jpg"
+       class="download-icon"
+       title="Download QR">
+        ⬇
     </a>
 </div>
 
+<p class="hint">Tap ⬇ to download QR or scan directly</p>
+
+<p>OR click below to download the QR code</p>
+
+<br><br>
+
+<a href="upi-qr.jpg"
+   download="JustListen-UPI-QR.jpg"
+   style="display:inline-block;padding:12px 25px;
+          background:#2c3e50;color:white;
+          text-decoration:none;border-radius:6px;">
+   Download QR Code
+</a>
+
+<p style="margin-top:25px;">
+    After payment, you will be contacted at your selected time.
+</p>
+
+<!-- FILL INFORMATION BUTTON -->
+<a href="YOUR_GOOGLE_FORM_LINK_HERE"
+   class="session-btn"
+   id="sessionBtn"
+   target="_blank">
+   Fill Information for Session
+</a>
+
 <script>
-    // Show payment button after 3.5 seconds
+    // Show "Fill Information" button after 7 seconds
     setTimeout(() => {
-        document.getElementById("payBtn").classList.add("show");
-    }, 3500);
+        document.getElementById("sessionBtn").classList.add("show");
+    }, 7000);
 </script>
 
 </body>
