@@ -8,10 +8,17 @@
 <style>
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #f4f6f8;
     text-align: center;
     padding: 40px;
-    
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+        url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .qr-wrapper {
@@ -51,6 +58,36 @@ body {
     color: #555;
     margin-top: 12px;
 }
+
+/* SESSION INFO BUTTON */
+.session-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 28px;
+    background: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+
+    /* hidden initially */
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+    pointer-events: none;
+
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+.session-btn.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.session-btn:hover {
+    background: #1f2f3d;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
 </style>
 </head>
 
@@ -62,25 +99,46 @@ body {
 <div class="qr-wrapper">
     <img src="upi_QR_Code.jpg" alt="UPI QR Code">
 
-    <!-- DOWNLOAD ICON -->
-    <a href="upi_QR_Code.jpg" download="JustListen-upi_QR_Code.jpg" class="download-icon" title="Download QR">
+    <a href="upi_QR_Code.jpg"
+       download="JustListen-upi_QR_Code.jpg"
+       class="download-icon"
+       title="Download QR">
         ⬇
     </a>
 </div>
 
 <p class="hint">Tap ⬇ to download QR or scan directly</p>
 
-<P>OR Click to below button and download the QR code </P> 
+<p>OR click below to download the QR code</p>
 
-    <br><br>
-<a href="upi-qr.jpg" download="JustListen-UPI-QR.jpg"
+<br><br>
+
+<a href="upi-qr.jpg"
+   download="JustListen-UPI-QR.jpg"
    style="display:inline-block;padding:12px 25px;
           background:#2c3e50;color:white;
           text-decoration:none;border-radius:6px;">
    Download QR Code
 </a>
 
-<p>After payment, you will be contacted at your selected time.</p>
+<p style="margin-top:25px;">
+    After payment, you will be contacted at your selected time.
+</p>
+
+<!-- FILL INFORMATION BUTTON -->
+<a href="https://forms.gle/49kdRMfKguw2jqgK6"
+   class="session-btn"
+   id="sessionBtn"
+   target="_blank">
+   Fill Information for Session
+</a>
+
+<script>
+    // Show "Fill Information" button after 7 seconds
+    setTimeout(() => {
+        document.getElementById("sessionBtn").classList.add("show");
+    }, 4000);
+</script>
 
 </body>
 </html>
