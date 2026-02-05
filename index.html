@@ -78,8 +78,45 @@ footer {
     font-weight: 600;
     color: #000;
 }
+
+#popupButton {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 14px 20px;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    animation: fadeIn 1.2s ease forwards;
+}
+
+#popupButton:hover {
+    background-color: #1f2f3d;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>
 </head>
+    
+<button id="popupButton" onclick="goToNextPage()">
+    Why are you holding your feelings alone?  
+    Share with me — I’m here to listen.
+</button>
 
 <body>
 
@@ -136,6 +173,17 @@ function setMarathi() {
         <p class="highlight">तुम्ही बोला —  मी ऐकेल .</p>
     `;
 }
+
+    <script>
+setTimeout(() => {
+    document.getElementById("popupButton").style.display = "block";
+}, 22000); // 22 seconds
+
+function goToNextPage() {
+    window.location.href = "listen.html"; // change to your next page
+}
+</script>
+
 </script>
 
 </body>
